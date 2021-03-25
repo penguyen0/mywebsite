@@ -7,6 +7,7 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
+import Contact from './contact.js';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -20,7 +21,7 @@ function TabPanel(props) {
       {...other}
     >
       {value === index && (
-        <Box p={3}>
+        <Box>
           <Typography>{children}</Typography>
         </Box>
       )}
@@ -71,7 +72,7 @@ export default function Home() {
         <div className={classes.root}>
           <Tabs
             orientation="vertical"
-            variant="scrollable"
+            variant="fullWidth"
             value={value}
             onChange={handleChange}
             aria-label="Vertical tabs example"
@@ -90,7 +91,7 @@ export default function Home() {
             Portfolio 
           </TabPanel>
           <TabPanel value={value} index={2}>
-            Contact Me
+            <Contact/>
           </TabPanel>
           <TabPanel value={value} index={3}>
             Item Four

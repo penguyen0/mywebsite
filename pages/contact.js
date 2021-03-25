@@ -1,8 +1,21 @@
 // This is my contact page 
 import axios from "axios";
 import { useState } from "react";
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
+import { makeStyles } from '@material-ui/core/styles';
+
+
+const useStyles = makeStyles((theme) => ({
+    form: {
+        display:"flex",
+        flexDirection:"column"
+      },
+  }));
+
 
 export default function Contact() {
+    const classes = useStyles();
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [phone, setPhone] = useState("");
@@ -22,16 +35,29 @@ export default function Contact() {
     }
     return (
         <div>
-            <form>
-                <label >Name</label>
-                <input type="text" value={name} onChange={(event)=> setName(event.target.value)} />
-                <label >Email</label>
-                <input type="text" value={email} onChange={(event)=> setEmail(event.target.value)} />
-                <label >Phone Number</label>
-                <input type="number" value={phone} onChange={(event)=> setPhone(event.target.value)} />
-                <button onClick={submit}>
-                    Submit
-                </button>
+            <form className={classes.form}>
+                <TextField
+                    id="Name"
+                    label="Name"
+                    value={name}
+                    onChange={(event)=> setName(event.target.value)}
+                    variant="outlined"
+                />
+                <TextField
+                    id="Email"
+                    label="Email"
+                    value={email}
+                    onChange={(event)=> setEmail(event.target.value)}
+                    variant="outlined"
+                />
+                <TextField
+                    id="Phone"
+                    label="Phone"
+                    value={phone}
+                    onChange={(event)=> setPhone(event.target.value)}
+                    variant="outlined"
+                />
+                <Button onClick={submit} variant="outlined">Submit</Button>
             </form>
         </div>
     )
